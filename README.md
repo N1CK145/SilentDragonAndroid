@@ -48,7 +48,13 @@ On OS X:
 
 The first time you create a release build you'll need to create two files. The release keystore is used for app signing and a properties file is used to store sensitive information about the keystore. These files should not be committed to git. Once you have both of these files you can create a release build for the Google Play Store.
 
-### Creating a release keystore
+### Creating a release keystore via CLI
+
+The `keytool` command can be used, for example:
+
+    keytool -genkey -alias silentdragon -keyalg RSA -keystore new.jks -dname "CN=Duke Leto, O=Hush" -storepass testing -keypass 123
+
+### Creating a release keystore via GUI
 * With Android Studio IDE open, on the system bar click Build -> Generate Signed Bundle/APK
 * Select the APK option instead of the Bundle option
 * On the next screen select app as the module and click "Create new"
@@ -56,6 +62,7 @@ The first time you create a release build you'll need to create two files. The r
 * On the next screen make sure the build variant "release" is selected and click Finish.
 
 ### Creating a properties file
+
 Within the projects main directory create a file secrets.properties The contents of the file are below and filled in with the release keystore alias, key password, and store password from when you created the release keystore.
 
 ```
