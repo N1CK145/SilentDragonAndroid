@@ -76,7 +76,7 @@ class SendActivity : AppCompatActivity() {
                     ))
                 }
 
-                if (s?.startsWith("t") == true) {
+                if (s?.startsWith("R") == true) {
                     txtSendMemo.isEnabled = false
                     chkIncludeReplyTo.isEnabled = false
                     txtSendMemo.text = SpannableStringBuilder("")
