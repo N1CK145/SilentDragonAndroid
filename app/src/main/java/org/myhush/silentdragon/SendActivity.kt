@@ -149,7 +149,9 @@ class SendActivity : AppCompatActivity() {
         // Then if the amount is valid
         val amt = amountHUSH.text.toString()
         val parsedAmt = amt.substring("${DataModel.mainResponseData?.tokenName} ".length, amt.length)
-        if (parsedAmt.toDoubleOrNull() == 0.0 || parsedAmt.toDoubleOrNull() == null) {
+
+        // amount=0 xtns are valid
+        if (parsedAmt.toDoubleOrNull() < 0.0 || parsedAmt.toDoubleOrNull() == null) {
             showErrorDialog("Invalid amount!")
             return
         }
@@ -185,11 +187,11 @@ class SendActivity : AppCompatActivity() {
 
         val memo = txtSendMemo.text.toString() + getReplyToAddressIfChecked(toAddr)
         if (memo.length > 512) {
-            showErrorDialog("Memo is too long")
+            showErrorDialog("Memo field is too long!")
             return
         }
 
-        if (toAddr.startsWith("t") && !memo.isBlank()) {
+        if (toAddr.startsWith("R") && !memo.isBlank()) {
             showErrorDialog("Can't send a memo to a t-Address")
             return
         }
@@ -213,7 +215,7 @@ class SendActivity : AppCompatActivity() {
     }
 
     private fun getReplyToAddressIfChecked(toAddr: String) : String {
-        if (chkIncludeReplyTo.isChecked && !toAddr.startsWith("t")) {
+        if (chkIncludeReplyTo.isChecked && toAddr.startsWith("zs1")) {
             return "\nReply to:\n${DataModel.mainResponseData?.saplingAddress}"
         } else {
             return ""
