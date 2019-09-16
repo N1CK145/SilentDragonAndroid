@@ -50,7 +50,7 @@ On OS X:
 
 On Debian-based systems:
 
-    apt-get install android-sdk gradle
+    apt-get install -y android-sdk gradle
     touch ~/.android/repositories.cfg
     sdkmanager --update
     sdkmanager "platform-tools" "platforms;android-28"
