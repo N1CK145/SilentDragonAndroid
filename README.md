@@ -56,6 +56,10 @@ On Debian-based systems:
     sdkmanager "platform-tools" "platforms;android-28"
     gradle build
 
+Make sure you have Gradle 5.4.x or higher, 5.4.1 is known to work:
+
+    ./gradlew wrapper --gradle-version=5.4.1
+
 ## Release Build Process
 
 The first time you create a release build you'll need to create two files. The

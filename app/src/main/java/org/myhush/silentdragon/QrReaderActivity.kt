@@ -160,7 +160,7 @@ class QrReaderActivity : AppCompatActivity() {
             if (err.length > 48) {
                 err = err.substring(0, 22) + "...." + err.substring(err.length - 22, err.length)
             }
-            lblErrorMsg.text = "\"$err\" is not a connection string"
+            lblErrorMsg.text = "\"$err\" is not a valid connection string!"
             return
         }
 
@@ -172,7 +172,7 @@ class QrReaderActivity : AppCompatActivity() {
             if (err.length > 48) {
                 err = err.substring(0, 22) + "...." + err.substring(err.length - 22, err.length)
             }
-            lblErrorMsg.text = "\"$err\" is not a valid address"
+            lblErrorMsg.text = "\"$err\" is not a valid HUSH address!"
             return
         }
 

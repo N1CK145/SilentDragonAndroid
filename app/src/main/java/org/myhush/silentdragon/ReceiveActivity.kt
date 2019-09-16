@@ -65,7 +65,7 @@ class ReceiveActivity : AppCompatActivity() {
         }
 
         if (addr.isNullOrBlank())
-            addr = "(no address)"
+            addr = "No address!"
 
         val addrTxt = findViewById<TextView>(R.id.addressTxt)
 
@@ -95,7 +95,7 @@ class ReceiveActivity : AppCompatActivity() {
 
     fun setZAddr() {
         addr = DataModel.mainResponseData?.saplingAddress ?: ""
-        txtRcvAddrTitle.text = "Your Hush sapling address"
+        txtRcvAddrTitle.text = "Your Hush shielded address"
         setAddr()
     }
 

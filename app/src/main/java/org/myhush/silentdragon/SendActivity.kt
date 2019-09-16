@@ -166,7 +166,7 @@ class SendActivity : AppCompatActivity() {
                 val alertDialog = AlertDialog.Builder(this@SendActivity)
                 alertDialog.setTitle("Send from t-addr?")
                 alertDialog.setMessage("${DataModel.mainResponseData?.tokenName} $parsedAmt is more than the balance in " +
-                        "your sapling address. This Tx will have to be sent from a transparent address, and will" +
+                        "your shielded address. This Tx will have to be sent from a transparent address, and will" +
                         " not be private.\n\nAre you absolutely sure?")
                 alertDialog.apply {
                     setPositiveButton("Send Anyway") { dialog, id -> doConfirm() }
