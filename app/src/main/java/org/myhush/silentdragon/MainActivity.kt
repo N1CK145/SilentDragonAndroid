@@ -309,14 +309,14 @@ class MainActivity : AppCompatActivity(),
                     // Check to make sure that the result is an actual address
                     if (!(data?.dataString ?: "").startsWith("ws")) {
                         Toast.makeText(applicationContext,
-                            "${data?.dataString} is not a valid connection string", Toast.LENGTH_SHORT).show()
+                            "${data?.dataString} is not a valid connection string!", Toast.LENGTH_SHORT).show()
                         return
                     }
 
                     val conComponents = data?.dataString?.split(",")
                     if (conComponents?.size ?: 0 < 2 || conComponents?.size ?: 0 > 3) {
                         Toast.makeText(applicationContext,
-                            "${data?.dataString} is not a valid connection string", Toast.LENGTH_SHORT).show()
+                            "${data?.dataString} is not a valid connection string!", Toast.LENGTH_SHORT).show()
                         return
                     }
 
