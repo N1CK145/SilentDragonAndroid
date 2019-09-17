@@ -70,17 +70,15 @@ class SendActivity : AppCompatActivity() {
                         R.color.colorPrimary
                     ))
                 } else {
-                    txtValidAddress.text = "Not a valid address"
-                    txtValidAddress.setTextColor(ContextCompat.getColor(applicationContext,
-                        R.color.colorAccent
-                    ))
+                    txtValidAddress.text = "Not a valid Hush address!"
+                    txtValidAddress.setTextColor(ContextCompat.getColor(applicationContext, R.color.colorAccent))
                 }
 
                 if (s?.startsWith("R") == true) {
-                    txtSendMemo.isEnabled = false
+                    txtSendMemo.isEnabled       = false
                     chkIncludeReplyTo.isEnabled = false
-                    txtSendMemo.text = SpannableStringBuilder("")
-                    txtSendMemoTitle.text = "(No Memo for t-Addresses)"
+                    txtSendMemo.text            = SpannableStringBuilder("")
+                    txtSendMemoTitle.text       = "(No Memo for t-Addresses)"
                 } else {
                     txtSendMemo.isEnabled = true
                     chkIncludeReplyTo.isEnabled = true
@@ -142,7 +140,7 @@ class SendActivity : AppCompatActivity() {
         // First, check if the address is correct.
         val toAddr = sendAddress.text.toString()
         if (!DataModel.isValidAddress(toAddr)) {
-            showErrorDialog("Invalid destination address!")
+            showErrorDialog("Invalid destination Hush address!")
             return
         }
 
@@ -151,7 +149,7 @@ class SendActivity : AppCompatActivity() {
         val parsedAmt = amt.substring("${DataModel.mainResponseData?.tokenName} ".length, amt.length)
 
         // amount=0 xtns are valid
-        if (parsedAmt.toDoubleOrNull() < 0.0 || parsedAmt.toDoubleOrNull() == null) {
+        if (parsedAmt.toDoubleOrNull() == null || parsedAmt.toDouble() < 0.0 ) {
             showErrorDialog("Invalid amount!")
             return
         }
@@ -187,12 +185,12 @@ class SendActivity : AppCompatActivity() {
 
         val memo = txtSendMemo.text.toString() + getReplyToAddressIfChecked(toAddr)
         if (memo.length > 512) {
-            showErrorDialog("Memo field is too long!")
+            showErrorDialog("Memo field is too long! Must be at most 512 bytes.")
             return
         }
 
         if (toAddr.startsWith("R") && !memo.isBlank()) {
-            showErrorDialog("Can't send a memo to a t-Address")
+            showErrorDialog("Can't send a memo to a transparent address")
             return
         }
 
@@ -224,7 +222,7 @@ class SendActivity : AppCompatActivity() {
 
     fun showErrorDialog(msg: String) {
         val alertDialog = AlertDialog.Builder(this@SendActivity).create()
-        alertDialog.setTitle("Error Sending Transaction")
+        alertDialog.setTitle("Error Sending Transaction!")
         alertDialog.setMessage(msg)
         alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK") {
                 dialog, _ -> dialog.dismiss() }
