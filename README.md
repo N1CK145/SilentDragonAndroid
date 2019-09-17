@@ -2,7 +2,7 @@
 
 SilentDragon Android is an Android frontend for the desktop SilentDragon that lets you send and receive shielded payments from your mobile phone.
 
-![Screenshots](SDA.jpg?raw=true)
+<img height=50% width=50% src="https://raw.githubusercontent.com/MyHush/SilentDragonAndroid/master/SDA.jpg">
 
 ## When will it be in my favorite app store?
 
