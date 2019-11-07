@@ -77,9 +77,9 @@ class TransactionItemFragment : Fragment() {
                 R.color.colorAccent
             ))
         } else {
-            col.setImageResource(R.color.colorPrimary)
+            col.setImageResource(R.color.white_unselected)
             amt.setTextColor(ContextCompat.getColor(view.context,
-                R.color.colorPrimary
+                R.color.white_unselected
             ))
         }
 
