@@ -67,7 +67,7 @@ class SendActivity : AppCompatActivity() {
                 if (DataModel.isValidAddress(s.toString())) {
                     txtValidAddress.text = "\u2713 Valid address"
                     txtValidAddress.setTextColor(ContextCompat.getColor(applicationContext,
-                        R.color.colorPrimary
+                        R.color.white_selected
                     ))
                 } else {
                     txtValidAddress.text = "Not a valid Hush address!"
@@ -125,7 +125,7 @@ class SendActivity : AppCompatActivity() {
                     ))
                 } else {
                     txtMemoSize.setTextColor(ContextCompat.getColor(applicationContext,
-                        R.color.colorPrimary
+                        R.color.white_selected
                     ))
                 }
             }
@@ -247,7 +247,7 @@ class SendActivity : AppCompatActivity() {
         amountUSD.setText( (zprice * amt).format(2))
 
         amountHUSH.text =
-                "${DataModel.mainResponseData?.tokenName} " + DecimalFormat("#.########").format(amt)
+            "${DataModel.mainResponseData?.tokenName} " + DecimalFormat("#.########").format(amt)
     }
 
     private fun setAmount(amt: Double?) {
@@ -275,7 +275,7 @@ class SendActivity : AppCompatActivity() {
                         sendAddress.setText(data.data?.host ?: "", TextView.BufferType.EDITABLE)
 
                         var amt = data.data?.getQueryParameter("amt") ?:
-                                    data.data?.getQueryParameter("amount")
+                        data.data?.getQueryParameter("amount")
 
                         // Remove all commas.
                         amt = amt?.replace(",", ".")
