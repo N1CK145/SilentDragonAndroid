@@ -106,7 +106,7 @@
                     android:selectAllOnFocus="true"
                     android:singleLine="true"
                     android:textAlignment="center"
-                    android:textColor="@android:color/background_dark"
+                    android:textColor="#FFFFFF"
                     android:textSize="36sp"
                     app:layout_constraintBottom_toTopOf="@+id/amountHUSH"
                     app:layout_constraintEnd_toEndOf="parent"
