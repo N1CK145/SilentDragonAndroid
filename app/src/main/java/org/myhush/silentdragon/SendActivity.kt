@@ -103,10 +103,10 @@ class SendActivity : AppCompatActivity() {
 
 
                     if (hush == null || zprice == null)
-                    amountUSD.text = "0.0 $"
+                    amountUSD.text = "$ 0.0"
                 else
                     amountUSD.text =
-                         DecimalFormat("#.########").format(hush * zprice) + " $"
+                         " $"   + DecimalFormat("#.########").format(hush * zprice)
             }
             }
         })
@@ -246,7 +246,7 @@ class SendActivity : AppCompatActivity() {
         amountHUSH.setText((DecimalFormat("#.########").format(amt) + "${DataModel.mainResponseData?.tokenName}"))
 
         amountUSD.text =
-             DecimalFormat("#.########").format(amt) + "$"
+             "$" + DecimalFormat("#.########").format(amt)
     }
 
     private fun setAmount(amt: Double?) {
@@ -256,7 +256,7 @@ class SendActivity : AppCompatActivity() {
             amountUSD.text = "0.0 $"
         else
             amountUSD.text =
-                 DecimalFormat("#.########").format(amt) + "$"
+                "$" + DecimalFormat("#.########").format(amt)
 
     }
 

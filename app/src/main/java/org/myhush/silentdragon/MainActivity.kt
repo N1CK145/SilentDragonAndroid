@@ -160,7 +160,7 @@ class MainActivity : AppCompatActivity(),
 
                         lblBalance.text = "Balance"
                         txtMainBalance.text = balText.substring(0, balText.length - 4) + " ${DataModel.mainResponseData?.tokenName} "
-                        txtMainBalanceUSD.text =  DecimalFormat("#,##0.00").format(bal * zPrice) + " $"
+                        txtMainBalanceUSD.text =  "$ " + DecimalFormat("#,##0.00").format(bal * zPrice)
 
                         // Enable the send and recieve buttons
                         bottomNav.menu.findItem(R.id.action_recieve).isEnabled = true
