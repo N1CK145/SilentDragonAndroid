@@ -96,10 +96,10 @@ class SendActivity : AppCompatActivity() {
                 val zprice = DataModel.mainResponseData?.zecprice
 
                 if (hush == null || zprice == null)
-                    amountUSD.text = "$ 0.0"
+                    amountUSD.text = "0.0 $"
                 else
                     amountUSD.text =
-                        "$ " + DecimalFormat("#.########").format(hush * zprice)
+                         DecimalFormat("#.########").format(hush * zprice) + "$"
             }
         })
 
@@ -238,7 +238,7 @@ class SendActivity : AppCompatActivity() {
         amountHUSH.setText( (zprice / amt).format(2))
 
         amountUSD.text =
-            "${DataModel.mainResponseData?.tokenName} " + DecimalFormat("#.########").format(amt)
+             DecimalFormat("#.########").format(amt) + "${DataModel.mainResponseData?.tokenName} "
     }
 
     private fun setAmount(amt: Double?) {
@@ -248,7 +248,7 @@ class SendActivity : AppCompatActivity() {
             amountUSD.text = "${DataModel.mainResponseData?.tokenName} 0.0"
         else
             amountUSD.text =
-                "${DataModel.mainResponseData?.tokenName} " + DecimalFormat("#.########").format(amt)
+                 DecimalFormat("#.########").format(amt) + "${DataModel.mainResponseData?.tokenName} "
 
     }
 
