@@ -96,33 +96,33 @@
                 app:layout_constraintTop_toBottomOf="@id/toLayout">
 
                 <EditText
-                    android:id="@+id/amountUSD"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:id="@+id/amountHUSH"
+                    android:layout_width="173dp"
+                    android:layout_height="66dp"
                     android:layout_marginTop="16dp"
-                    android:hint="$ 0.00"
+                    android:hint="HUSH 0.00"
                     android:inputType="numberDecimal"
                     android:maxLength="14"
                     android:selectAllOnFocus="true"
                     android:singleLine="true"
                     android:textAlignment="center"
                     android:textColor="#FFFFFF"
-                    android:textSize="36sp"
-                    app:layout_constraintBottom_toTopOf="@+id/amountHUSH"
+                    android:textSize="30sp"
+                    app:layout_constraintBottom_toTopOf="@+id/amountUSD"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/amountHUSH"
+                    android:id="@+id/amountUSD"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
-                    android:text="HUSH 0.0"
+                    android:text="$ 0.00"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/amountUSD" />
+                    app:layout_constraintTop_toBottomOf="@+id/amountHUSH" />
 
                 <TextView
                     android:id="@+id/textView8"
@@ -136,15 +136,16 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/txtSendCurrencySymbol"
+                    android:id="@+id/textView12"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="26dp"
-                    android:text="$"
-                    android:textColor="#FFFFFF"
-                    android:textSize="36sp"
-                    app:layout_constraintEnd_toStartOf="@+id/amountUSD"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="30dp"
+                    android:text="HUSH"
+                    android:textSize="27sp"
+                    app:layout_constraintStart_toEndOf="@+id/amountHUSH"
                     app:layout_constraintTop_toTopOf="parent" />
+
             </android.support.constraint.ConstraintLayout>
             <android.support.constraint.ConstraintLayout
                     android:layout_width="match_parent"
