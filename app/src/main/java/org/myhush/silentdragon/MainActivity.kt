@@ -96,7 +96,7 @@ class MainActivity : AppCompatActivity(),
         lblBalance.text = ""
         txtMainBalanceUSD.text = ""
         txtMainBalance.text = status
-        balanceSmall.text = ""
+
     }
 
     @SuppressLint("SetTextI18n")
@@ -159,9 +159,8 @@ class MainActivity : AppCompatActivity(),
                         val balText = DecimalFormat("#0.00000000").format(bal)
 
                         lblBalance.text = "Balance"
-                        txtMainBalance.text = "${DataModel.mainResponseData?.tokenName} " + balText.substring(0, balText.length - 4)
-                        balanceSmall.text = balText.substring(balText.length - 4, balText.length)
-                        txtMainBalanceUSD.text = "$ " + DecimalFormat("#,##0.00").format(bal * zPrice)
+                        txtMainBalance.text = balText.substring(0, balText.length - 4) + " ${DataModel.mainResponseData?.tokenName} "
+                        txtMainBalanceUSD.text =  "$ " + DecimalFormat("#,##0.00").format(bal * zPrice)
 
                         // Enable the send and recieve buttons
                         bottomNav.menu.findItem(R.id.action_recieve).isEnabled = true
