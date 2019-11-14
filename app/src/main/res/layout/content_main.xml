@@ -25,41 +25,43 @@
             android:layout_marginStart="16dp" app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="16dp"
             app:layout_constraintBottom_toTopOf="@+id/txtMainBalance" android:textColor="@color/light_grey"/>
+
     <TextView
-            android:text="HUSH 0.0"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
-            android:id="@+id/txtMainBalance"
-            app:layout_constraintBottom_toTopOf="@+id/txtMainBalanceUSD"
-            android:textSize="30sp"
-            app:layout_constraintTop_toBottomOf="@+id/lblBalance" android:textColor="@android:color/white"/>
+        android:id="@+id/txtMainBalance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0.0 Hush"
+        android:textColor="@android:color/white"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/txtMainBalanceUSD"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lblBalance" />
+
     <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="21dp"
-            android:id="@+id/balanceSmall"
-            android:text="0000"
-            android:textSize="14sp" android:textColor="@android:color/white"
-            app:layout_constraintBaseline_toBaselineOf="@+id/txtMainBalance"
-            app:layout_constraintStart_toEndOf="@+id/txtMainBalance"
-            android:layout_marginStart="2dp"/>
-    <TextView
-            android:text="$ 0.0"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/txtMainBalanceUSD"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="154dp"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="154dp"
-            app:layout_constraintTop_toBottomOf="@+id/txtMainBalance"
-            android:textColor="@color/light_grey" app:layout_constraintBottom_toBottomOf="@+id/imageView2"
-            android:layout_marginBottom="32dp"/>
+        android:id="@+id/txtMainBalanceUSD"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="154dp"
+        android:layout_marginEnd="154dp"
+        android:layout_marginBottom="32dp"
+        android:text="0.0 $"
+        android:textColor="@color/light_grey"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtMainBalance" />
+
     <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="46dp" app:srcCompat="@mipmap/ic_launcher_round"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" android:id="@+id/imageView3"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="125dp"/>
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="46dp"
+        android:layout_marginTop="125dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/ic_launcher_hush_new_foreground" />
     <android.support.v4.widget.SwipeRefreshLayout
             android:id="@+id/swiperefresh"
             android:layout_width="match_parent"

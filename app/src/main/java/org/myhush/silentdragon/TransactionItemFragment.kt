@@ -68,8 +68,7 @@ class TransactionItemFragment : Fragment() {
         val col = view.findViewById<ImageView>(R.id.typeColor)
         val amt = view.findViewById<TextView>(R.id.txamt)
         val amtzec = tx?.amount?.toDoubleOrNull() ?: 0.0
-        amt.text = DataModel.mainResponseData?.tokenName + " " +
-                    (if (tx?.type == "send") "" else "+") + DecimalFormat("#0.00########").format(amtzec)
+        amt.text = (if (tx?.type == "send") "" else "+") +  DecimalFormat("#0.00########").format(amtzec) + " " + DataModel.mainResponseData?.tokenName
 
         if (tx?.type == "send") {
             col.setImageResource(R.color.colorAccent)
@@ -77,9 +76,9 @@ class TransactionItemFragment : Fragment() {
                 R.color.colorAccent
             ))
         } else {
-            col.setImageResource(R.color.colorPrimary)
+            col.setImageResource(R.color.white_selected)
             amt.setTextColor(ContextCompat.getColor(view.context,
-                R.color.colorPrimary
+                R.color.white_selected
             ))
         }
 

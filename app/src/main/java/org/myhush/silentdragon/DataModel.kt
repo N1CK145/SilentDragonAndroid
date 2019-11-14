@@ -206,8 +206,7 @@ object DataModel {
             Regex("^ztestsapling[a-z0-9]{76}", RegexOption.IGNORE_CASE).matches(a) ||
                     Regex("^tm[a-z0-9]{33}$", RegexOption.IGNORE_CASE).matches(a)
         } else {
-            Regex("^z[a-z0-9]{77}$", RegexOption.IGNORE_CASE).matches(a) ||
-                    Regex("^t[a-z0-9]{34}$", RegexOption.IGNORE_CASE).matches(a)
+            Regex("^zs1[a-z0-9]{75}$", RegexOption.IGNORE_CASE).matches(a) || Regex("^R[a-z0-9]{33}$", RegexOption.IGNORE_CASE).matches(a)
         }
     }
 
