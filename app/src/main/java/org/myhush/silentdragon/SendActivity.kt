@@ -78,7 +78,7 @@ class SendActivity : AppCompatActivity() {
                     txtSendMemo.isEnabled       = false
                     chkIncludeReplyTo.isEnabled = false
                     txtSendMemo.text            = SpannableStringBuilder("")
-                    txtSendMemoTitle.text       = "(No Memo for t-Addresses)"
+                    txtSendMemoTitle.text       = "(No Memo for TADDR)"
                 } else {
                     txtSendMemo.isEnabled = true
                     chkIncludeReplyTo.isEnabled = true
@@ -162,7 +162,7 @@ class SendActivity : AppCompatActivity() {
                 amt.toDouble() <= DataModel.mainResponseData?.maxspendable ?: Double.MAX_VALUE) {
 
                 val alertDialog = AlertDialog.Builder(this@SendActivity)
-                alertDialog.setTitle("Send from t-addr?")
+                alertDialog.setTitle("Send from TADDR ?")
                 alertDialog.setMessage("${DataModel.mainResponseData?.tokenName} $amt is more than the balance in " +
                         "your shielded address. This Tx will have to be sent from a transparent address, and will" +
                         " not be private.\n\nAre you absolutely sure?")
