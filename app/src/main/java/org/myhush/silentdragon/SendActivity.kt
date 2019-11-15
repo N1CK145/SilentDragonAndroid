@@ -70,7 +70,7 @@ class SendActivity : AppCompatActivity() {
                         R.color.white_selected
                     ))
                 } else {
-                    txtValidAddress.text = "Not a valid Hush address!"
+                    txtValidAddress.text = "Not a valid HUSH address!"
                     txtValidAddress.setTextColor(ContextCompat.getColor(applicationContext, R.color.colorAccent))
                 }
 
