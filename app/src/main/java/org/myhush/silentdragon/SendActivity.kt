@@ -141,7 +141,7 @@ class SendActivity : AppCompatActivity() {
         // First, check if the address is correct.
         val toAddr = sendAddress.text.toString()
         if (!DataModel.isValidAddress(toAddr)) {
-            showErrorDialog("Invalid destination Hush address!")
+            showErrorDialog("Invalid destination HUSH address!")
             return
         }
 
