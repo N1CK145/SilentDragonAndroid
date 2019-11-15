@@ -30,7 +30,7 @@
         android:id="@+id/txtMainBalance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="0.0 Hush"
+        android:text="0.00 HUSH"
         android:textColor="@android:color/white"
         android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/txtMainBalanceUSD"

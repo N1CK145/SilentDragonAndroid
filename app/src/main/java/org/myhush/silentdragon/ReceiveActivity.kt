@@ -81,7 +81,7 @@ class ReceiveActivity : AppCompatActivity() {
 
         addrTxt.setOnClickListener {
             val clipboard = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-            val clip = ClipData.newPlainText("Hush address", addr)
+            val clip = ClipData.newPlainText("HUSH address", addr)
             clipboard.primaryClip = clip
             Toast.makeText(applicationContext, "Copied address to clipboard", Toast.LENGTH_SHORT).show()
         }
@@ -89,13 +89,13 @@ class ReceiveActivity : AppCompatActivity() {
 
     fun setTAddr() {
         addr = DataModel.mainResponseData?.tAddress ?: ""
-        txtRcvAddrTitle.text = "Your Hush transparent address"
+        txtRcvAddrTitle.text = "Your HUSH transparent address"
         setAddr()
     }
 
     fun setZAddr() {
         addr = DataModel.mainResponseData?.saplingAddress ?: ""
-        txtRcvAddrTitle.text = "Your Hush shielded address"
+        txtRcvAddrTitle.text = "Your HUSH shielded address"
         setAddr()
     }
 
