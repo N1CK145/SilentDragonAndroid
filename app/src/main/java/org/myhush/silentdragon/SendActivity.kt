@@ -98,16 +98,17 @@ class SendActivity : AppCompatActivity() {
 
                 if (hush == null) {
                     txtSendCurrencySymbol.text = "" // Let the placeholder show the "$" sign
-                } else {
+                }
+                else
+                {
                     txtSendCurrencySymbol.text = "HUSH"
 
-
                     if (hush == null || zprice == null)
-                    amountUSD.text = "$ 0.0"
-                else
+                    amountUSD.text = "$0.0"
+                        else
                     amountUSD.text =
-                         " $"   + DecimalFormat("#.########").format(hush * zprice)
-            }
+                         "$"   + DecimalFormat("#.########").format(hush * zprice)
+                }
             }
         })
 
@@ -253,7 +254,7 @@ class SendActivity : AppCompatActivity() {
         val zprice = DataModel.mainResponseData?.zecprice
 
         if (amt == null || zprice == null)
-            amountUSD.text = "0.0 $"
+            amountUSD.text = "$0.0"
         else
             amountUSD.text =
                 "$" + DecimalFormat("#.########").format(amt)
