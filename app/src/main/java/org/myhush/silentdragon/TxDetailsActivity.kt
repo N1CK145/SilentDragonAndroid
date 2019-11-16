@@ -60,7 +60,7 @@ class TxDetailsActivity : AppCompatActivity() {
         val amtStr = DecimalFormat("#0.0000####").format(amt)
 
         txtAmtHush.text = " $amtStr  ${DataModel.mainResponseData?.tokenName}"
-        txtAmtUSD.text =  "$" + DecimalFormat("#,##0.00").format(
+        txtAmtUSD.text =  "$" + DecimalFormat("###,###,##0.00").format(
             (amt) * (DataModel.mainResponseData?.zecprice ?: 0.0))
 
         if (tx?.memo.isNullOrBlank()) {
