@@ -70,7 +70,7 @@ class SendActivity : AppCompatActivity() {
                         R.color.white_selected
                     ))
                 } else {
-                    txtValidAddress.text = "Not a valid Hush address!"
+                    txtValidAddress.text = "Not a valid HUSH address!"
                     txtValidAddress.setTextColor(ContextCompat.getColor(applicationContext, R.color.colorAccent))
                 }
 
@@ -78,7 +78,7 @@ class SendActivity : AppCompatActivity() {
                     txtSendMemo.isEnabled       = false
                     chkIncludeReplyTo.isEnabled = false
                     txtSendMemo.text            = SpannableStringBuilder("")
-                    txtSendMemoTitle.text       = "(No Memo for t-Addresses)"
+                    txtSendMemoTitle.text       = "(No Memo for TADDR)"
                 } else {
                     txtSendMemo.isEnabled = true
                     chkIncludeReplyTo.isEnabled = true
@@ -98,16 +98,16 @@ class SendActivity : AppCompatActivity() {
 
                 if (hush == null) {
                     txtSendCurrencySymbol.text = "" // Let the placeholder show the "$" sign
-                } else {
+                }
+                else
+                {
                     txtSendCurrencySymbol.text = "HUSH"
 
-
                     if (hush == null || zprice == null)
-                    amountUSD.text = "$ 0.0"
-                else
-                    amountUSD.text =
-                         " $"   + DecimalFormat("#.########").format(hush * zprice)
-            }
+                    amountUSD.text = "$0.0"
+                        else
+                    amountUSD.text = "$" + DecimalFormat("###,###,##0.00").format(hush * zprice)
+                }
             }
         })
 
@@ -141,7 +141,7 @@ class SendActivity : AppCompatActivity() {
         // First, check if the address is correct.
         val toAddr = sendAddress.text.toString()
         if (!DataModel.isValidAddress(toAddr)) {
-            showErrorDialog("Invalid destination Hush address!")
+            showErrorDialog("Invalid destination HUSH address!")
             return
         }
 
@@ -162,8 +162,8 @@ class SendActivity : AppCompatActivity() {
                 amt.toDouble() <= DataModel.mainResponseData?.maxspendable ?: Double.MAX_VALUE) {
 
                 val alertDialog = AlertDialog.Builder(this@SendActivity)
-                alertDialog.setTitle("Send from t-addr?")
-                alertDialog.setMessage("${DataModel.mainResponseData?.tokenName} $amt is more than the balance in " +
+                alertDialog.setTitle("Send from TADDR ?")
+                alertDialog.setMessage("$amt ${DataModel.mainResponseData?.tokenName} is more than the balance in " +
                         "your shielded address. This Tx will have to be sent from a transparent address, and will" +
                         " not be private.\n\nAre you absolutely sure?")
                 alertDialog.apply {
@@ -245,19 +245,16 @@ class SendActivity : AppCompatActivity() {
         val zprice = DataModel.mainResponseData?.zecprice ?: 0.0
         amountHUSH.setText((DecimalFormat("#.########").format(amt) + "${DataModel.mainResponseData?.tokenName}"))
 
-        amountUSD.text =
-             "$" + DecimalFormat("#.########").format(amt)
+        amountUSD.text = "$" + DecimalFormat("###,###,##0.00").format(amt)
     }
 
     private fun setAmount(amt: Double?) {
         val zprice = DataModel.mainResponseData?.zecprice
 
         if (amt == null || zprice == null)
-            amountUSD.text = "0.0 $"
+            amountUSD.text = "$0.0"
         else
-            amountUSD.text =
-                "$" + DecimalFormat("#.########").format(amt)
-
+            amountUSD.text = "$" + DecimalFormat("###,###,##0.00").format(amt)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

@@ -155,12 +155,12 @@ class MainActivity : AppCompatActivity(),
                     } else {
                         val bal = DataModel.mainResponseData?.balance ?: 0.0
                         val zPrice = DataModel.mainResponseData?.zecprice ?: 0.0
-
                         val balText = DecimalFormat("#0.00000000").format(bal)
 
                         lblBalance.text = "Balance"
-                        txtMainBalance.text = balText.substring(0, balText.length - 4) + " ${DataModel.mainResponseData?.tokenName} "
-                        txtMainBalanceUSD.text =  "$ " + DecimalFormat("#,##0.00").format(bal * zPrice)
+                        txtMainBalance.text = balText + " ${DataModel.mainResponseData?.tokenName} "
+                        //txtMainBalance.text = balText.substring(0, balText.length - 8) + " ${DataModel.mainResponseData?.tokenName} "
+                        txtMainBalanceUSD.text =  "$" + DecimalFormat("###,###,##0.00").format(bal * zPrice)
 
                         // Enable the send and recieve buttons
                         bottomNav.menu.findItem(R.id.action_recieve).isEnabled = true
