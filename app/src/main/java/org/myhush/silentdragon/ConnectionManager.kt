@@ -115,11 +115,18 @@ object ConnectionManager {
             DataModel.currencySymbols["USD"] = "$"
             DataModel.currencySymbols["EUR"] = "€"
             DataModel.currencySymbols["JPY"] = "¥"
+            DataModel.currencySymbols["CNY"] = "¥"
+            DataModel.currencySymbols["RUB"] = "\u20BD"
+            DataModel.currencySymbols["SGD"] = "$"
+            DataModel.currencySymbols["GBP"] = "£"
+            DataModel.currencySymbols["AUD"] = "$"
+            DataModel.currencySymbols["CAD"] = "$"
 
             Thread {
                 val client = OkHttpClient()
+                val currencies = "usd,eur,jpy,btc,cny,rub,cad,sgd,chf,inr,gbp,aud"
                 val request: Request = Request.Builder()
-                    .url("https://api.coingecko.com/api/v3/simple/price?ids=hush&vs_currencies=usd,eur,jpy,btc")
+                    .url("https://api.coingecko.com/api/v3/simple/price?ids=hush&vs_currencies=${currencies}")
                     .build()
                 val response: Response = client.newCall(request).execute()
                 val json: JSONObject = JSONObject(response.body()?.string())["hush"] as JSONObject
