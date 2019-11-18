@@ -24,9 +24,9 @@ object DataModel {
     var transactions : List<TransactionItem>? = null
 
     val fee: Double = 0.0001
-    var currencyValues: HashMap<String, Double?> = HashMap()
-    var currencySymbols: HashMap<String, String> = HashMap()
-    var selectedCurrency: String = ""
+    val currencyValues: HashMap<String, Double?> = HashMap()
+    val currencySymbols: HashMap<String, String> = HashMap()
+    var selectedCurrency = ""
 
     fun isTestnet(): Boolean {
         return mainResponseData?.tokenName != "HUSH"
