@@ -120,6 +120,7 @@ object ConnectionManager {
             DataModel.currencySymbols["SGD"] = "$"
             DataModel.currencySymbols["GBP"] = "£"
             DataModel.currencySymbols["AUD"] = "$"
+            DataModel.currencySymbols["CAD"] = "$"
 
             Thread {
                 val client = OkHttpClient()
