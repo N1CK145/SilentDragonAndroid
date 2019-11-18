@@ -116,3 +116,8 @@ This build can be directly uploaded to Google Play.
 ### Building a release APK for F-Droid
 
 ...
+
+
+# License
+
+GNU Public License v3
