@@ -170,7 +170,7 @@ object ConnectionManager {
                     Timer().schedule(object : TimerTask() {
                         override fun run() {
                             DataModel.makeAPICalls()
-                        }}, 1000)
+                        }}, 100)
                 }
             }
 
