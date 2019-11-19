@@ -171,7 +171,7 @@ class SendActivity : AppCompatActivity() {
 
                 val alertDialog = AlertDialog.Builder(this@SendActivity)
                 alertDialog.setTitle("Send from t-addr?")
-                alertDialog.setMessage("${DataModel.mainResponseData?.tokenName} $amt is more than the balance in " +
+                alertDialog.setMessage("$amt ${DataModel.mainResponseData?.tokenName} is more than the balance in " +
                         "your shielded address. This Tx will have to be sent from a transparent address, and will" +
                         " not be private.\n\nAre you absolutely sure?")
                 alertDialog.apply {
