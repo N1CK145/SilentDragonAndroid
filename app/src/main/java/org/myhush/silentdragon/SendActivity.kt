@@ -115,7 +115,7 @@ class SendActivity : AppCompatActivity() {
                 if (hush == null || price == null)
                     amountUSD.text = "$symbol 0.0"
                 else
-                    amountUSD.text = "$symbol " + DecimalFormat("#.########").format(hush * price)
+                    amountUSD.text = "$symbol " + DecimalFormat("#,##0.00").format(hush * price)
             }
         })
 
@@ -251,8 +251,7 @@ class SendActivity : AppCompatActivity() {
         // HUSH field manually.
         amountHUSH.setText((DecimalFormat("#.########").format(amt) + "${DataModel.mainResponseData?.tokenName}"))
         Toast.makeText(this.applicationContext, amt.toString(), Toast.LENGTH_SHORT).show()
-        amountUSD.text =
-             "${DataModel.currencySymbols[DataModel.selectedCurrency]} " + DecimalFormat("#.########").format(amt)
+        amountUSD.text = "${DataModel.currencySymbols[DataModel.selectedCurrency]} " + DecimalFormat("#,##0.00").format(amt)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
