@@ -170,7 +170,7 @@ class MainActivity : AppCompatActivity(),
                         val balText = DecimalFormat("#0.00000000").format(bal)
 
                         lblBalance.text = "Balance"
-                        txtMainBalance.text = balText.substring(0, balText.length - 4) + " ${DataModel.mainResponseData?.tokenName} "
+                        txtMainBalance.text = balText + " ${DataModel.mainResponseData?.tokenName} "
                         if(cur.length > 1)
                             txtMainBalanceUSD.text =  "${DataModel.currencySymbols[cur]} " + DecimalFormat("0.00000000").format(bal * price)
                         else
