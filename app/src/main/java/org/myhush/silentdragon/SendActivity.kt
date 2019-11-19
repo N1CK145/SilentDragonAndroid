@@ -64,8 +64,14 @@ class SendActivity : AppCompatActivity() {
         if (DataModel.currencyValues["USD"] == null)
             ConnectionManager.initCurrencies()
 
-        amountUSD.text = "${DataModel.currencySymbols[DataModel.selectedCurrency]} 0.00"
-        textViewFee.text = "0.0001 HUSH"
+        if (DataModel.selectedCurrency == "BTC")
+            amountUSD.text = "${DataModel.currencySymbols[DataModel.selectedCurrency]} " + DecimalFormat("0.00000000").format(0)
+        else
+        {
+            amountUSD.text = "${DataModel.currencySymbols[DataModel.selectedCurrency]} " + DecimalFormat("0.00").format(0)
+        }
+
+        textViewFee.text = DecimalFormat("0.0000").format(0.0001) + " HUSH"
 
         sendAddress.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
@@ -113,9 +119,17 @@ class SendActivity : AppCompatActivity() {
                 }
 
                 if (hush == null || price == null)
-                    amountUSD.text = "$symbol 0.0"
+                    if (symbol == "BTC")
+                        amountUSD.text = "$symbol " + DecimalFormat("0.00000000").format(0)
+                    else {
+                        amountUSD.text = "$symbol " + DecimalFormat("0.00").format(0)
+                    }
                 else
-                    amountUSD.text = "$symbol " + DecimalFormat("#,##0.00").format(hush * price)
+                    if (symbol == "BTC")
+                        amountUSD.text = "$symbol " + DecimalFormat("#,##0.00000000").format(hush * price)
+                    else {
+                        amountUSD.text = "$symbol " + DecimalFormat("#,##0.00").format(hush * price)
+                    }
             }
         })
 
