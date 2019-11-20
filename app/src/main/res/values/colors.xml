@@ -8,4 +8,6 @@
 
     <color name="white_selected">#E0FFFFFF</color>
     <color name="white_unselected">#66FFFFFF</color>
+
+    <color name="charcole">#36454f</color>
 </resources>
