@@ -20,6 +20,7 @@
         <activity android:name=".chat.ConversationActivity"></activity>
         <activity
             android:name=".chat.ChatActivity"
+            android:theme="@style/AppTheme.NoActionBar"
             android:label="@string/title_activity_chat" />
         <activity
             android:name=".SettingsActivity"
