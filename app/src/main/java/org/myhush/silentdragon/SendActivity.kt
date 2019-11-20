@@ -64,8 +64,14 @@ class SendActivity : AppCompatActivity() {
         if (DataModel.currencyValues["USD"] == null)
             ConnectionManager.initCurrencies()
 
-        amountUSD.text = "${DataModel.currencySymbols[DataModel.selectedCurrency]} 0.00"
-        textViewFee.text = "0.0001 HUSH"
+        if (DataModel.selectedCurrency == "BTC")
+            amountUSD.text = "${DataModel.currencySymbols[DataModel.selectedCurrency]} " + DecimalFormat("0.00000000").format(0)
+        else
+        {
+            amountUSD.text = "${DataModel.currencySymbols[DataModel.selectedCurrency]} " + DecimalFormat("0.00").format(0)
+        }
+
+        textViewFee.text = DecimalFormat("0.0000").format(0.0001) + " HUSH"
 
         sendAddress.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
@@ -113,9 +119,17 @@ class SendActivity : AppCompatActivity() {
                 }
 
                 if (hush == null || price == null)
-                    amountUSD.text = "$symbol 0.0"
+                    if (symbol == "BTC")
+                        amountUSD.text = "$symbol " + DecimalFormat("0.00000000").format(0)
+                    else {
+                        amountUSD.text = "$symbol " + DecimalFormat("0.00").format(0)
+                    }
                 else
-                    amountUSD.text = "$symbol " + DecimalFormat("#.########").format(hush * price)
+                    if (symbol == "BTC")
+                        amountUSD.text = "$symbol " + DecimalFormat("#,##0.00000000").format(hush * price)
+                    else {
+                        amountUSD.text = "$symbol " + DecimalFormat("#,##0.00").format(hush * price)
+                    }
             }
         })
 
@@ -171,7 +185,7 @@ class SendActivity : AppCompatActivity() {
 
                 val alertDialog = AlertDialog.Builder(this@SendActivity)
                 alertDialog.setTitle("Send from t-addr?")
-                alertDialog.setMessage("${DataModel.mainResponseData?.tokenName} $amt is more than the balance in " +
+                alertDialog.setMessage("$amt ${DataModel.mainResponseData?.tokenName} is more than the balance in " +
                         "your shielded address. This Tx will have to be sent from a transparent address, and will" +
                         " not be private.\n\nAre you absolutely sure?")
                 alertDialog.apply {
@@ -251,8 +265,7 @@ class SendActivity : AppCompatActivity() {
         // HUSH field manually.
         amountHUSH.setText((DecimalFormat("#.########").format(amt) + "${DataModel.mainResponseData?.tokenName}"))
         Toast.makeText(this.applicationContext, amt.toString(), Toast.LENGTH_SHORT).show()
-        amountUSD.text =
-             "${DataModel.currencySymbols[DataModel.selectedCurrency]} " + DecimalFormat("#.########").format(amt)
+        amountUSD.text = "${DataModel.currencySymbols[DataModel.selectedCurrency]} " + DecimalFormat("#,##0.00").format(amt)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
