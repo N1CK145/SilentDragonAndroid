@@ -10,4 +10,6 @@
     <color name="white_unselected">#66FFFFFF</color>
 
     <color name="charcole">#36454f</color>
+    <color name="message_send">#aa007878</color>
+    <color name="message_recive">#aa00bbbb</color>
 </resources>

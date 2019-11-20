@@ -88,13 +88,13 @@ class MainActivity : AppCompatActivity(),
                     return@setOnNavigationItemSelectedListener true
                 }
                 R.id.action_bal -> true
-                R.id.action_recieve -> {
-                    val intent = Intent(this, ReceiveActivity::class.java)
+                R.id.action_chat -> {
+                    val intent = Intent(this, ChatActivity::class.java)
                     startActivity(intent)
                     return@setOnNavigationItemSelectedListener true
                 }
-                R.id.action_chat -> {
-                    val intent = Intent(this, ChatActivity::class.java)
+                R.id.action_recieve -> {
+                    val intent = Intent(this, ReceiveActivity::class.java)
                     startActivity(intent)
                     return@setOnNavigationItemSelectedListener true
                 }
