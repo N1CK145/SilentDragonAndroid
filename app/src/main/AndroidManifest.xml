@@ -17,10 +17,10 @@
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning"
         tools:replace="android:allowBackup">
-        <activity android:name=".chat.ConversationActivity"></activity>
+        <activity android:name=".chat.ConversationActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".chat.ChatActivity"
-            android:theme="@style/AppTheme.NoActionBar"
             android:label="@string/title_activity_chat" />
         <activity
             android:name=".SettingsActivity"
