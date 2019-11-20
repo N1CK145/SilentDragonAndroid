@@ -113,19 +113,28 @@ object ConnectionManager {
     }
     fun initCurrencies(){
         try {
-            DataModel.currencySymbols["USD"] = "$"
-            DataModel.currencySymbols["EUR"] = "€"
-            DataModel.currencySymbols["JPY"] = "¥"
-            DataModel.currencySymbols["CNY"] = "¥"
-            DataModel.currencySymbols["RUB"] = "\u20BD"
-            DataModel.currencySymbols["SGD"] = "$"
-            DataModel.currencySymbols["GBP"] = "£"
             DataModel.currencySymbols["AUD"] = "$"
             DataModel.currencySymbols["CAD"] = "$"
+            DataModel.currencySymbols["CNY"] = "¥"
+            DataModel.currencySymbols["EUR"] = "€"
+            DataModel.currencySymbols["GBP"] = "£"
+            DataModel.currencySymbols["JPY"] = "¥"
+            DataModel.currencySymbols["KRW"] = "₩"
+            DataModel.currencySymbols["MXN"] = "$"
+            DataModel.currencySymbols["MYR"] = "RM"
+            DataModel.currencySymbols["PHP"] = "₱"
+            DataModel.currencySymbols["PKR"] = "₨"
+            DataModel.currencySymbols["RUB"] = "₽"
+            DataModel.currencySymbols["SGD"] = "$"
+            DataModel.currencySymbols["THB"] = "฿"
+            DataModel.currencySymbols["USD"] = "$"
+            DataModel.currencySymbols["VEF"] = "Bs"
+            DataModel.currencySymbols["VND"] = "₫"
+            DataModel.currencySymbols["ZAR"] = "R"
 
             Thread {
                 val client = OkHttpClient()
-                val currencies = "usd,eur,jpy,btc,cny,rub,cad,sgd,chf,inr,gbp,aud"
+                val currencies = "usd,eur,jpy,btc,cny,rub,cad,sgd,chf,inr,gbp,aud,pkr,mxn,php,vnd,thb,zar,krw,myr,vef"
                 val request: Request = Request.Builder()
                     .url("https://api.coingecko.com/api/v3/simple/price?ids=hush&vs_currencies=${currencies}")
                     .build()
