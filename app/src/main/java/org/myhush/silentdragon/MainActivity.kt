@@ -69,8 +69,15 @@ class MainActivity : AppCompatActivity(),
         }
 
         txtMainBalanceUSD.setOnClickListener {
-            Toast.makeText(applicationContext, "1 HUSH = ${DataModel.currencySymbols[DataModel.selectedCurrency]}${DecimalFormat("#.##")
+
+
+            if(DataModel.selectedCurrency == "BTC")
+                Toast.makeText(applicationContext, "1 HUSH = ${DataModel.currencySymbols[DataModel.selectedCurrency]}${DecimalFormat(" #,##0.00000000")
+                    .format(DataModel.currencyValues[DataModel.selectedCurrency])}", Toast.LENGTH_LONG).show()
+            else(
+                Toast.makeText(applicationContext, "1 HUSH = ${DataModel.currencySymbols[DataModel.selectedCurrency]}${DecimalFormat("#,##0.00")
                 .format(DataModel.currencyValues[DataModel.selectedCurrency])}", Toast.LENGTH_LONG).show()
+                    )
         }
 
         bottomNav.setOnNavigationItemSelectedListener {
@@ -176,8 +183,8 @@ class MainActivity : AppCompatActivity(),
                         val balText = DecimalFormat("#0.00000000").format(bal)
 
                         lblBalance.text = "Balance"
-                        txtMainBalance.text = balText.substring(0, balText.length - 4) + " ${DataModel.mainResponseData?.tokenName} "
-                        if(cur.length > 1)
+                        txtMainBalance.text = balText + " ${DataModel.mainResponseData?.tokenName} "
+                        if(cur == "BTC")
                             txtMainBalanceUSD.text =  "${DataModel.currencySymbols[cur]} " + DecimalFormat("0.00000000").format(bal * price)
                         else
                             txtMainBalanceUSD.text =  "${DataModel.currencySymbols[cur]} " + DecimalFormat("#,##0.00").format(bal * price)
