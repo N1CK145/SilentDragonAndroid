@@ -3,19 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="72dp"
-    android:background="#666">
+    android:layout_height="76dp"
+    android:background="#2d2d2d">
 
     <ImageView
         android:id="@+id/imageProfilePicture"
         android:layout_width="56dp"
-        android:layout_height="0dp"
+        android:layout_height="56dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
         android:background="@drawable/profile_image"
         android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:visibility="visible" />
@@ -43,7 +41,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="11dp"
+        android:layout_marginTop="8dp"
         android:text="Peter Parker"
         android:textColor="#ffffff"
         android:textSize="17sp"
@@ -53,7 +51,7 @@
 
     <TextView
         android:id="@+id/textViewLastMessage"
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:maxWidth="300dp"
@@ -67,7 +65,7 @@
 
     <TextView
         android:id="@+id/textViewTime"
-        android:layout_width="wrap_content"
+        android:layout_width="28dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
@@ -79,17 +77,26 @@
 
     <ImageView
         android:id="@+id/read_indicator"
-        android:layout_width="wrap_content"
+        android:layout_width="20dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical|end"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="3dp"
+        android:layout_marginBottom="8dp"
         android:paddingStart="2dp"
         android:src="@drawable/ic_delivery_status_read"
-        android:tint="@color/charcole"
+        android:tint="#77ffffff"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         tools:visibility="visible" />
+
+    <View
+        android:id="@+id/divider6"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/charcole"
+        app:layout_constraintTop_toBottomOf="@+id/textViewLastMessage"
+        tools:layout_editor_absoluteX="0dp" />
 
 </android.support.constraint.ConstraintLayout>

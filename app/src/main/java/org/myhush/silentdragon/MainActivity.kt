@@ -23,6 +23,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
 import org.myhush.silentdragon.DataModel.ConnectionStatus
 import org.myhush.silentdragon.DataModel.connStatus
+import org.myhush.silentdragon.chat.ChatActivity
 import java.text.DecimalFormat
 
 
@@ -82,6 +83,11 @@ class MainActivity : AppCompatActivity(),
                 R.id.action_bal -> true
                 R.id.action_recieve -> {
                     val intent = Intent(this, ReceiveActivity::class.java)
+                    startActivity(intent)
+                    return@setOnNavigationItemSelectedListener true
+                }
+                R.id.action_chat -> {
+                    val intent = Intent(this, ChatActivity::class.java)
                     startActivity(intent)
                     return@setOnNavigationItemSelectedListener true
                 }

@@ -2,12 +2,29 @@
       xmlns:app="http://schemas.android.com/apk/res-auto"
       xmlns:tools="http://schemas.android.com/tools"
       tools:context="org.myhush.silentdragon.MainActivity">
+
     <item android:id="@+id/action_send"
-          android:title="Send"
-          android:orderInCategory="300"
-          app:showAsAction="never" android:icon="@drawable/send_selector"/>
-    <item android:title="Balance" android:id="@+id/action_bal" android:icon="@drawable/balance_selector"
-          android:orderInCategory="200"/>
-    <item android:title="Receive" android:id="@+id/action_recieve" android:icon="@drawable/receive_selector"
-          android:orderInCategory="100"/>
+        android:title="Send"
+        android:orderInCategory="300"
+        android:iconTint="@color/white_unselected"
+        app:showAsAction="never"
+        android:icon="@drawable/send_selector"/>
+
+    <item android:title="Balance"
+        android:id="@+id/action_bal"
+        android:icon="@drawable/balance_selector"
+        android:iconTint="@color/white_unselected"
+        android:orderInCategory="200"/>
+
+    <item android:title="Receive"
+        android:id="@+id/action_recieve"
+        android:icon="@drawable/receive_selector"
+        android:iconTint="@color/white_unselected"
+        android:orderInCategory="100"/>
+
+    <item android:title="Chat"
+        android:id="@+id/action_chat"
+        android:icon="@drawable/ic_keyboard_icon"
+        android:iconTint="@color/white_unselected"
+        android:orderInCategory="100"/>
 </menu>
