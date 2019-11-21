@@ -111,7 +111,7 @@ class MainActivity : AppCompatActivity(),
     private fun loadSharedPref() {
         var ref: SharedPreferences = getSharedPreferences("MainFile", 0)
 
-        DataModel.selectedCurrency = ref.getString("currency", "USD")
+        DataModel.selectedCurrency = ref.getString("currency", "USD")!!
     }
 
     private fun setMainStatus(status: String) {

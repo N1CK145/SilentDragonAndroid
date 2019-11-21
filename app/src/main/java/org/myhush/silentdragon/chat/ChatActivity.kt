@@ -1,9 +1,14 @@
 package org.myhush.silentdragon.chat
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.FragmentTransaction
 import android.support.v7.app.AppCompatActivity
+import android.text.InputType
+import android.view.Menu
+import android.view.MenuItem
+import android.widget.EditText
 import kotlinx.android.synthetic.main.activity_chat.*
 import org.myhush.silentdragon.MainActivity
 import org.myhush.silentdragon.R
@@ -21,9 +26,7 @@ class ChatActivity : AppCompatActivity() {
     }
 
     private fun restoreSoonChats() {
-        addMessage("Nil", "Armstrong")
-        addMessage("Peter", "Parker")
-        addMessage("Mark", "Zuckerberg")
+        addChat("Nil", "Armstrong")
     }
 
     private fun initListener(){
@@ -52,7 +55,7 @@ class ChatActivity : AppCompatActivity() {
         }
     }
 
-    fun addMessage(firstName: String, lastName: String){
+    private fun addChat(firstName: String, lastName: String){
         val fragment = ChatItemFragment()
         val fragTx: FragmentTransaction = supportFragmentManager.beginTransaction()
 
@@ -61,5 +64,21 @@ class ChatActivity : AppCompatActivity() {
 
         fragTx.add(R.id.ChatTable, fragment)
         fragTx.commit()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        menuInflater.inflate(R.menu.menu_chat, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.action_addChat -> {
+                // TODO: Create "createContactActivity"
+                return true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 }
