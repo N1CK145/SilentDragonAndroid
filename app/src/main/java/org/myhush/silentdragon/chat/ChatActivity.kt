@@ -23,9 +23,9 @@ class ChatActivity : AppCompatActivity() {
     }
 
     private fun restoreSoonChats() {
-        addChat("Nil", "Armstrong")
-        addChat("Peter", "Parker")
-        addChat("Mark", "Zuckerberg")
+        addMessage("Nil", "Armstrong")
+        addMessage("Peter", "Parker")
+        addMessage("Mark", "Zuckerberg")
     }
 
     private fun initListener(){
@@ -54,7 +54,7 @@ class ChatActivity : AppCompatActivity() {
         }
     }
 
-    fun addChat(firstName: String, lastName: String){
+    fun addMessage(firstName: String, lastName: String){
         val fragment = ChatItemFragment()
         val fragTx: FragmentTransaction = supportFragmentManager.beginTransaction()
 
