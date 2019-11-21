@@ -8,25 +8,22 @@ import android.util.AttributeSet
 import android.view.View
 import android.view.Window
 import android.widget.TextView
+import kotlinx.android.synthetic.main.fragment_conversation_item_send.*
 import org.myhush.silentdragon.R
 import org.myhush.silentdragon.conversation_item_recive
 import org.myhush.silentdragon.conversation_item_send
 
 class ConversationActivity : AppCompatActivity() {
-    var displayName = "Peter Parker"
+    var displayName = ""
     var messages = HashMap<Boolean, String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_conversation)
         findViewById<TextView>(R.id.textViewContactName2)
+        displayName = intent.extras.get("displayName").toString()
 
         restoreChat()
-    }
-
-    override fun onCreateView(name: String?, context: Context?, attrs: AttributeSet?): View? {
-        return super.onCreateView(name, context, attrs)
-        requestWindowFeature(Window.FEATURE_NO_TITLE)
     }
 
     private fun restoreChat(){
@@ -43,10 +40,12 @@ class ConversationActivity : AppCompatActivity() {
 
         if(recived){
             val fragment = conversation_item_recive()
+            fragment.message.text = message
             fragTx.add(R.id.MessageList, fragment)
 
         }else{
             val fragment = conversation_item_send()
+            fragment.message.text = message
             fragTx.add(R.id.MessageList, fragment)
         }
         fragTx.commit()

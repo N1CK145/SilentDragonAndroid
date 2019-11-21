@@ -17,9 +17,7 @@ class ChatActivity : AppCompatActivity() {
         setContentView(R.layout.activity_chat)
 
         initListener()
-        restoreSoonChats()
-        //TODO: restoreSoonChats()
-        //TODO: restoreSoonChats()
+        restoreSoonChats() // TODO: @N1CK145
     }
 
     private fun restoreSoonChats() {

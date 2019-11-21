@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import org.myhush.silentdragon.DataModel
 import org.myhush.silentdragon.R
 
 class ChatItemFragment : Fragment() {
@@ -27,6 +28,9 @@ class ChatItemFragment : Fragment() {
     private fun initListener() {
         v?.setOnClickListener {
             val intent = Intent(activity, ConversationActivity::class.java)
+
+            intent.putExtra("displayName", "$firstName $lastName") // Send some information
+
             startActivity(intent)
         }
     }
