@@ -1,53 +1,65 @@
 package org.myhush.silentdragon.chat
 
-import android.content.Context
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.app.FragmentTransaction
-import android.util.AttributeSet
-import android.view.View
-import android.view.Window
 import android.widget.TextView
-import kotlinx.android.synthetic.main.fragment_conversation_item_send.*
 import org.myhush.silentdragon.R
-import org.myhush.silentdragon.conversation_item_recive
-import org.myhush.silentdragon.conversation_item_send
 
 class ConversationActivity : AppCompatActivity() {
     var displayName = ""
-    var messages = HashMap<Boolean, String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_conversation)
         findViewById<TextView>(R.id.textViewContactName2)
+
         displayName = intent.extras.get("displayName").toString()
 
         restoreChat()
+        setViews()
+    }
+
+    private fun setViews() {
+        findViewById<TextView>(R.id.textViewContactName2).text = displayName
     }
 
     private fun restoreChat(){
-        addMessage("Lorem Ipsum", true)
-        addMessage("Lorem Ipsum", true)
-        addMessage("Lorem Ipsum", false)
-        addMessage("Lorem Ipsum", true)
+        val message1 = Message()
+        message1.content = "  Hallo!    "
+        message1.type = ConversationFragmentType.RECIVE
+        message1.dateTime = 0
+
+        addMessage(message1)
+
+        val message2 = Message()
+        message2.content = "  Wie geht es dir?        "
+        message2.type = ConversationFragmentType.SEND
+        message2.dateTime = 0
+
+        //addMessage("     Wie gehts?", ConversationFragmentType.RECIVE, 0)
+        //addMessage("Follow me on YouTube! <3      ", ConversationFragmentType.RECIVE, 0)
+        //addMessage("   .", ConversationFragmentType.SEND, 0)
+        //addMessage("f", ConversationFragmentType.SEND, 0)
     }
 
 
 
-    fun addMessage(message: String, recived: Boolean){
-        val fragTx: FragmentTransaction = supportFragmentManager.beginTransaction()
+    private fun addMessage(message: Message){
+        var memo = message.content
 
-        if(recived){
-            val fragment = conversation_item_recive()
-            fragment.message.text = message
-            fragTx.add(R.id.MessageList, fragment)
-
-        }else{
-            val fragment = conversation_item_send()
-            fragment.message.text = message
-            fragTx.add(R.id.MessageList, fragment)
+        while (memo.startsWith(" ") || memo.endsWith(" ")){
+            memo = memo.removePrefix(" ")
+            memo = memo.removeSuffix(" ")
         }
-        fragTx.commit()
+
+        if(!memo.isNullOrEmpty()){
+            val fragTx: FragmentTransaction = supportFragmentManager.beginTransaction()
+            val fragment = ConversationItemFragment()
+
+            fragment.message = message
+
+            fragTx.commit()
+        }
     }
 }
