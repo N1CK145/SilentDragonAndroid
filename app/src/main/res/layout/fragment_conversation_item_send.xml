@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".chat.ConversationActivity" >
+    tools:context=".conversation_item_send" >
 
     <TextView
-        android:id="@+id/messageContent"
+        android:id="@+id/message"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="9dp"
         android:background="@drawable/chat_background_send"
         android:maxWidth="260sp"
         android:paddingLeft="10sp"
@@ -32,6 +32,6 @@
         android:text="10:15 AM"
         android:textColor="@color/message_text"
         android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="@+id/messageContent"
-        app:layout_constraintStart_toStartOf="@+id/messageContent" />
+        app:layout_constraintBottom_toBottomOf="@+id/message"
+        app:layout_constraintStart_toStartOf="@+id/message" />
 </android.support.constraint.ConstraintLayout>
