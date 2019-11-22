@@ -275,6 +275,11 @@ class MainActivity : AppCompatActivity(),
                 startActivity(intent)
                 return true
             }
+            R.id.action_about -> {
+                val intent = Intent(this, AboutActivity::class.java)
+                startActivity(intent)
+                return true
+            }
             R.id.action_refresh -> {
                 swiperefresh.isRefreshing = true
                 ConnectionManager.refreshAllData()

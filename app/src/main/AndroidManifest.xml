@@ -32,8 +32,18 @@
                 android:value=".SendActivity" />
         </activity>
         <activity
-            android:name=".QrReaderActivity"
-            android:screenOrientation="portrait" />
+            android:name="org.myhush.silentdragon.AboutActivity"
+            android:label="@string/title_activity_about"
+            android:parentActivityName="org.myhush.silentdragon.SendActivity"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".SendActivity" />
+        </activity>
+
+        <activity
+            android:name="org.myhush.silentdragon.QrReaderActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".TxDetailsActivity"
             android:label="@string/title_activity_tx_details"
