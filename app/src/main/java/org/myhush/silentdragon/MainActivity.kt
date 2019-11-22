@@ -23,6 +23,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
 import org.myhush.silentdragon.DataModel.ConnectionStatus
 import org.myhush.silentdragon.DataModel.connStatus
+import org.myhush.silentdragon.chat.ChatActivity
 import java.text.DecimalFormat
 
 
@@ -87,6 +88,11 @@ class MainActivity : AppCompatActivity(),
                     return@setOnNavigationItemSelectedListener true
                 }
                 R.id.action_bal -> true
+                R.id.action_chat -> {
+                    val intent = Intent(this, ChatActivity::class.java)
+                    startActivity(intent)
+                    return@setOnNavigationItemSelectedListener true
+                }
                 R.id.action_recieve -> {
                     val intent = Intent(this, ReceiveActivity::class.java)
                     startActivity(intent)
@@ -105,7 +111,7 @@ class MainActivity : AppCompatActivity(),
     private fun loadSharedPref() {
         var ref: SharedPreferences = getSharedPreferences("MainFile", 0)
 
-        DataModel.selectedCurrency = ref.getString("currency", "USD")
+        DataModel.selectedCurrency = ref.getString("currency", "USD")!!
     }
 
     private fun setMainStatus(status: String) {
