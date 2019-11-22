@@ -84,7 +84,6 @@ class SettingsActivity : AppCompatActivity() {
 
         chkDisallowInternet.isChecked = !DataModel.getGlobalAllowInternet()
 
-        lblVersionName.text = BuildConfig.VERSION_NAME
         lblServerVersion.text = DataModel.mainResponseData?.serverversion ?: "Not Connected"
     }
 }
