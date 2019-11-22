@@ -20,17 +20,17 @@ class ConversationActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_conversation)
-        findViewById<TextView>(R.id.textViewContactName2)
+
         displayName = intent.extras.get("displayName").toString()
 
         restoreChat()
     }
 
     private fun restoreChat(){
-        addMessage("Lorem Ipsum", true)
-        addMessage("Lorem Ipsum", true)
-        addMessage("Lorem Ipsum", false)
-        addMessage("Lorem Ipsum", true)
+        //addMessage("Lorem Ipsum", true)
+        //addMessage("Lorem Ipsum", true)
+        //addMessage("Lorem Ipsum", false)
+        //addMessage("Lorem Ipsum", true)
     }
 
 
