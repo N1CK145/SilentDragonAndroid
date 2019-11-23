@@ -1,14 +1,11 @@
 package org.myhush.silentdragon.chat
 
-import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.FragmentTransaction
 import android.support.v7.app.AppCompatActivity
-import android.text.InputType
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.EditText
 import kotlinx.android.synthetic.main.activity_chat.*
 import org.myhush.silentdragon.MainActivity
 import org.myhush.silentdragon.R
@@ -16,7 +13,6 @@ import org.myhush.silentdragon.ReceiveActivity
 import org.myhush.silentdragon.SendActivity
 
 class ChatActivity : AppCompatActivity() {
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat)

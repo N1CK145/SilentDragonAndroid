@@ -15,7 +15,7 @@ import org.myhush.silentdragon.conversation_item_send
 
 class ConversationActivity : AppCompatActivity() {
     var displayName = ""
-    var messages = HashMap<Boolean, String>()
+    var messages: ArrayList<Message> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,26 +27,27 @@ class ConversationActivity : AppCompatActivity() {
     }
 
     private fun restoreChat(){
-        //addMessage("Lorem Ipsum", true)
-        //addMessage("Lorem Ipsum", true)
-        //addMessage("Lorem Ipsum", false)
-        //addMessage("Lorem Ipsum", true)
+        val m1 = Message("Test", "XXXXX", "YYYYYY", 99999999)
+        //attachMessage(m1)
     }
 
 
 
-    fun addMessage(message: String, recived: Boolean){
+    fun attachMessage(message: Message){
         val fragTx: FragmentTransaction = supportFragmentManager.beginTransaction()
 
-        if(recived){
-            val fragment = conversation_item_recive()
-            fragment.message.text = message
-            fragTx.add(R.id.MessageList, fragment)
+        when (message.messageType){
+            MessageType.SEND -> {
+                val fragment = conversation_item_send()
+                fragment.message.text = message.memo
+                fragTx.add(R.id.MessageList, fragment)
+            }
 
-        }else{
-            val fragment = conversation_item_send()
-            fragment.message.text = message
-            fragTx.add(R.id.MessageList, fragment)
+            MessageType.RECIEVE -> {
+                val fragment = conversation_item_recive()
+                fragment.message.text = message.memo
+                fragTx.add(R.id.MessageList, fragment)
+            }
         }
         fragTx.commit()
     }
