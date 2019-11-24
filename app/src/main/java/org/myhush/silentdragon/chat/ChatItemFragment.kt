@@ -13,7 +13,7 @@ import org.myhush.silentdragon.R
 class ChatItemFragment : Fragment() {
     var firstName: String = ""
     var lastName: String = ""
-    var lastMessage: String = "No messages..."
+    var lastMessage: String = ""
     var v: View? = null
 
     override fun onCreateView (inflater: LayoutInflater, container: ViewGroup?,

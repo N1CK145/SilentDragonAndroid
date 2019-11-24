@@ -6,11 +6,9 @@ import android.support.v4.app.FragmentTransaction
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_chat.*
-import org.myhush.silentdragon.MainActivity
-import org.myhush.silentdragon.R
-import org.myhush.silentdragon.ReceiveActivity
-import org.myhush.silentdragon.SendActivity
+import org.myhush.silentdragon.*
 
 class ChatActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,11 +16,19 @@ class ChatActivity : AppCompatActivity() {
         setContentView(R.layout.activity_chat)
 
         initListener()
-        restoreSoonChats() // TODO: @N1CK145
+        restoreLastChats()
     }
 
-    private fun restoreSoonChats() {
-        addChat("Nil", "Armstrong")
+    private fun restoreLastChats() {
+        DataModel.transactions?.forEach { tx ->
+            if (!tx.memo.isNullOrEmpty()){
+                // ADD CHAT BY ADDRESS
+            }
+        }
+
+        Addressbook.contactList.forEach {
+            addChat(it)
+        }
     }
 
     private fun initListener(){
@@ -51,12 +57,13 @@ class ChatActivity : AppCompatActivity() {
         }
     }
 
-    private fun addChat(firstName: String, lastName: String){
+    private fun addChat(contact: Addressbook.Contact){
         val fragment = ChatItemFragment()
         val fragTx: FragmentTransaction = supportFragmentManager.beginTransaction()
 
-        fragment.firstName = firstName
-        fragment.lastName = lastName
+        fragment.firstName = contact.firstName
+        fragment.lastName = contact.lastName
+        fragment.lastMessage = contact.addressList[0]
 
         fragTx.add(R.id.ChatTable, fragment)
         fragTx.commit()

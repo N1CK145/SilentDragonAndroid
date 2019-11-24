@@ -1,8 +1,9 @@
-package org.myhush.silentdragon
+package org.myhush.silentdragon.chat
 
 object Addressbook {
     class Contact {
         var addressList: ArrayList<String> = ArrayList()
+        val messageList: ArrayList<Message> = ArrayList()
         var firstName = ""
         var lastName = ""
 

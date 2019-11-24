@@ -3,6 +3,7 @@ package org.myhush.silentdragon
 
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.app.AlertDialog
 import android.content.*
 import android.net.Uri
 import android.os.Bundle
@@ -105,6 +106,7 @@ class MainActivity : AppCompatActivity(),
         }
 
         loadSharedPref()
+
         updateUI(false)
     }
 

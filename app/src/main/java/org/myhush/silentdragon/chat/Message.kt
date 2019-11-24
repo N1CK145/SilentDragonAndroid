@@ -1,10 +1,5 @@
 package org.myhush.silentdragon.chat
 
-enum class MessageType{
-    SEND,
-    RECIEVE
-}
-
 class Message {
     var memo = ""
     var fromAddress = ""
@@ -15,10 +10,12 @@ class Message {
     constructor(memo: String, toAddress: String, fromAddress: String){
         this.memo = memo
         this.fromAddress = fromAddress
+        this.toAddress = toAddress
     }
     constructor(memo: String, toAddress: String, fromAddress: String, dateTime: Long){
         this.memo = memo
         this.fromAddress = fromAddress
+        this.toAddress = toAddress
         this.dateTime = dateTime
     }
 }
