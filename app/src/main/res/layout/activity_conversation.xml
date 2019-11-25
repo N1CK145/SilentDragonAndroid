@@ -54,36 +54,7 @@
             android:id="@+id/MessageList"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <fragment
-                android:id="@+id/fragment3"
-                android:name="org.myhush.silentdragon.conversation_item_recive"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:layout="@layout/fragment_conversation_item_recive" />
-
-            <fragment
-                android:id="@+id/fragment4"
-                android:name="org.myhush.silentdragon.conversation_item_send"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:layout="@layout/fragment_conversation_item_send" />
-
-            <fragment
-                android:id="@+id/fragment2"
-                android:name="org.myhush.silentdragon.conversation_item_recive"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:layout="@layout/fragment_conversation_item_recive" />
-
-            <fragment
-                android:id="@+id/fragment"
-                android:name="org.myhush.silentdragon.conversation_item_send"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:layout="@layout/fragment_conversation_item_send" />
-        </LinearLayout>
+            android:orientation="vertical"/>
     </ScrollView>
 
     <android.support.constraint.ConstraintLayout

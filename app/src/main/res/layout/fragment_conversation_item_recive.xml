@@ -7,15 +7,29 @@
     tools:context=".conversation_item_send" >
 
     <TextView
+        android:id="@+id/message"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="9dp"
         android:layout_marginTop="10dp"
         android:background="@drawable/chat_background_recive"
         android:maxWidth="260sp"
+        android:minWidth="80sp"
         android:padding="10sp"
         android:text="Lorem ipsum dolor sit amet, consetetur sadipscing elitr"
         android:textColor="@color/message_text"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/time2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="10sp"
+        android:layout_marginBottom="5dp"
+        android:text="10:15 AM"
+        android:textColor="@color/message_text"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/message"
+        app:layout_constraintEnd_toEndOf="@+id/message" />
 </android.support.constraint.ConstraintLayout>
