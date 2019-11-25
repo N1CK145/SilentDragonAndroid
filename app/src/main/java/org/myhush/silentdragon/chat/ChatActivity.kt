@@ -6,7 +6,6 @@ import android.support.v4.app.FragmentTransaction
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_chat.*
 import org.myhush.silentdragon.*
 
@@ -61,8 +60,8 @@ class ChatActivity : AppCompatActivity() {
         val fragment = ChatItemFragment()
         val fragTx: FragmentTransaction = supportFragmentManager.beginTransaction()
 
-        fragment.firstName = contact.firstName
-        fragment.lastName = contact.lastName
+        fragment.fullname = contact.fullname
+        fragment.nickname = contact.nickname
         fragment.lastMessage = contact.addressList[0]
 
         fragTx.add(R.id.ChatTable, fragment)

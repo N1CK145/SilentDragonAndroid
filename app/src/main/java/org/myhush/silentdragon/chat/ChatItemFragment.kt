@@ -7,12 +7,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import org.myhush.silentdragon.DataModel
 import org.myhush.silentdragon.R
 
 class ChatItemFragment : Fragment() {
-    var firstName: String = ""
-    var lastName: String = ""
+    var fullname: String = ""
+    var nickname: String = ""
     var lastMessage: String = ""
     var v: View? = null
 
@@ -29,14 +28,14 @@ class ChatItemFragment : Fragment() {
         v?.setOnClickListener {
             val intent = Intent(activity, ConversationActivity::class.java)
 
-            intent.putExtra("displayName", "$firstName $lastName") // Send some information
+            intent.putExtra("displayName", "$fullname $nickname") // Send some information
 
             startActivity(intent)
         }
     }
 
     fun updateData(){
-        v!!.findViewById<TextView>(R.id.textViewContactName).text = "$firstName $lastName"
+        v!!.findViewById<TextView>(R.id.textViewContactName).text = "$fullname $nickname"
         v!!.findViewById<TextView>(R.id.textViewLastMessage).text = lastMessage
     }
 

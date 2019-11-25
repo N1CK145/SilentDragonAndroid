@@ -4,21 +4,21 @@ object Addressbook {
     class Contact {
         var addressList: ArrayList<String> = ArrayList()
         val messageList: ArrayList<Message> = ArrayList()
-        var firstName = ""
-        var lastName = ""
+        var fullname = ""
+        var nickname = ""
 
-        constructor(firstName: String, lastName: String){
-            this.firstName = firstName
-            this.lastName = lastName
+        constructor(fullname: String, nickname: String){
+            this.fullname = fullname
+            this.nickname = nickname
         }
-        constructor(firstName: String, lastName: String, address: String){
-            this.firstName = firstName
-            this.lastName = lastName
+        constructor(fullname: String, nickname: String, address: String){
+            this.fullname = fullname
+            this.nickname = nickname
             this.addressList.add(address)
         }
-        constructor(firstName: String, lastName: String, addressList: ArrayList<String>){
-            this.firstName = firstName
-            this.lastName = lastName
+        constructor(fullname: String, nickname: String, addressList: ArrayList<String>){
+            this.fullname = fullname
+            this.nickname = nickname
             this.addressList = addressList
         }
     }

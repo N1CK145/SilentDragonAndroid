@@ -1,21 +1,22 @@
 package org.myhush.silentdragon.chat
 
+import org.myhush.silentdragon.DataModel
+
 class Message {
     var memo = ""
     var fromAddress = ""
     var toAddress = ""
     var messageType = MessageType.SEND
     var dateTime: Long = 0
+    var txID = ""
+    var txHeight: Int = -1
 
-    constructor(memo: String, toAddress: String, fromAddress: String){
-        this.memo = memo
+    constructor(fromAddress: String, tx: DataModel.TransactionItem){
+        this.memo = tx.memo.toString()
+        this.txID = tx.txid.toString()
+        this.dateTime = tx.datetime
+        this.toAddress = tx.addr
         this.fromAddress = fromAddress
-        this.toAddress = toAddress
     }
-    constructor(memo: String, toAddress: String, fromAddress: String, dateTime: Long){
-        this.memo = memo
-        this.fromAddress = fromAddress
-        this.toAddress = toAddress
-        this.dateTime = dateTime
-    }
+
 }

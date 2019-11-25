@@ -1,17 +1,15 @@
 package org.myhush.silentdragon.chat
 
-import android.content.SharedPreferences
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.app.FragmentTransaction
 import org.myhush.silentdragon.R
 import org.myhush.silentdragon.conversation_item_recive
 import org.myhush.silentdragon.conversation_item_send
-import java.lang.Exception
 
 class ConversationActivity : AppCompatActivity() {
     var displayName = ""
-    var messages: ArrayList<Message> = ArrayList()
+    var contact: Addressbook.Contact? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,18 +20,9 @@ class ConversationActivity : AppCompatActivity() {
         restoreChat()
     }
 
-    private fun restoreChat(){
-
-        try{
-            val m1 = Message("Test", "XXXXX", "YYYYYY", 99999999)
-            attachMessage(m1)
-        } catch (e: Exception){
-            var pref: SharedPreferences = getSharedPreferences("MainFile",0)
-
-            var editor: SharedPreferences.Editor = pref.edit()
-            editor.putString("Error", e.stackTrace.contentDeepToString())
-
-            editor.commit()
+    private fun restoreChat() {
+        contact?.messageList?.forEach {
+            attachMessage(it)
         }
     }
 
@@ -54,6 +43,5 @@ class ConversationActivity : AppCompatActivity() {
             }
         }
         fragTx.commit()
-        messages.add(message)
     }
 }
