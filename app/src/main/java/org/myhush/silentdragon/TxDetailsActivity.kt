@@ -39,6 +39,7 @@ class TxDetailsActivity : AppCompatActivity() {
             imgTypeColor.setImageResource(R.color.colorAccent)
 
         if (tx?.type == "confirm") {
+
             txtType.text = "Confirm Transaction"
             txtDateTime.text = ""
             btnExternal.text = "Confirm and Send"
@@ -119,6 +120,11 @@ class TxDetailsActivity : AppCompatActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_txdetails, menu)
+
+        tx = Klaxon().parse(StringReader(intent.getStringExtra("EXTRA_TXDETAILS")))
+        if (tx?.type == "confirm") {
+            menu!!.removeItem(R.id.action_view)
+        }
         return true
     }
 
