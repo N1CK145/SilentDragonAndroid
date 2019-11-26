@@ -6,7 +6,11 @@ import android.support.v4.app.FragmentTransaction
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
+import android.widget.LinearLayout
+import android.widget.TableLayout
 import kotlinx.android.synthetic.main.activity_chat.*
+import kotlinx.android.synthetic.main.content_chat_list.view.*
 import org.myhush.silentdragon.*
 
 class ChatActivity : AppCompatActivity() {
@@ -16,6 +20,11 @@ class ChatActivity : AppCompatActivity() {
 
         initListener()
         restoreLastChats()
+
+        swiperefreshChat.setOnRefreshListener {
+            refresh()
+            swiperefreshChat.isRefreshing = false
+        }
     }
 
     private fun restoreLastChats() {
@@ -24,10 +33,7 @@ class ChatActivity : AppCompatActivity() {
                 // ADD CHAT BY ADDRESS
             }
         }
-
-        Addressbook.contactList.forEach {
-            addChat(it)
-        }
+        refresh()
     }
 
     private fun initListener(){
@@ -56,6 +62,14 @@ class ChatActivity : AppCompatActivity() {
         }
     }
 
+    fun refresh(){
+        findViewById<LinearLayout>(R.id.ChatTable).removeAllViews()
+
+        Addressbook.contactList.forEach {
+            addChat(it)
+        }
+    }
+
     private fun addChat(contact: Addressbook.Contact){
         val fragment = ChatItemFragment()
         val fragTx: FragmentTransaction = supportFragmentManager.beginTransaction()
@@ -77,7 +91,8 @@ class ChatActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.action_addChat -> {
-                // TODO: Create "createContactActivity"
+                val intent = Intent(this, AddContactActivity::class.java)
+                startActivity(intent)
                 return true
             }
             else -> super.onOptionsItemSelected(item)

@@ -20,6 +20,7 @@ class ChatItemFragment : Fragment() {
         v = inflater.inflate(R.layout.fragment_chat_item, container, false)
 
         updateData()
+
         initListener()
         return v!!
     }
@@ -28,14 +29,14 @@ class ChatItemFragment : Fragment() {
         v?.setOnClickListener {
             val intent = Intent(activity, ConversationActivity::class.java)
 
-            intent.putExtra("displayName", "$fullname $nickname") // Send some information
+            intent.putExtra("displayName", nickname) // Send some information
 
             startActivity(intent)
         }
     }
 
     fun updateData(){
-        v!!.findViewById<TextView>(R.id.textViewContactName).text = "$fullname $nickname"
+        v!!.findViewById<TextView>(R.id.textViewContactName).text = nickname
         v!!.findViewById<TextView>(R.id.textViewLastMessage).text = lastMessage
     }
 
