@@ -241,7 +241,7 @@ class SendActivity : AppCompatActivity() {
         }
     }
 
-    fun showErrorDialog(msg: String) {
+    private fun showErrorDialog(msg: String) {
         val alertDialog = AlertDialog.Builder(this@SendActivity).create()
         alertDialog.setTitle("Error Sending Transaction!")
         alertDialog.setMessage(msg)
