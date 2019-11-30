@@ -1,15 +1,14 @@
 package org.myhush.silentdragon.chat
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.app.FragmentTransaction
 import android.widget.EditText
+import android.widget.ImageButton
 import android.widget.TextView
 import kotlinx.android.synthetic.main.activity_conversation.*
-import org.myhush.silentdragon.DataModel
-import org.myhush.silentdragon.R
-import org.myhush.silentdragon.conversation_item_recive
-import org.myhush.silentdragon.conversation_item_send
+import org.myhush.silentdragon.*
 
 class ConversationActivity : AppCompatActivity() {
     var displayName = ""
