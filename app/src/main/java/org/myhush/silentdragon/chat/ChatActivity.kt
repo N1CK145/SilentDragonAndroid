@@ -6,11 +6,8 @@ import android.support.v4.app.FragmentTransaction
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
 import android.widget.LinearLayout
-import android.widget.TableLayout
 import kotlinx.android.synthetic.main.activity_chat.*
-import kotlinx.android.synthetic.main.content_chat_list.view.*
 import org.myhush.silentdragon.*
 
 class ChatActivity : AppCompatActivity() {
@@ -19,21 +16,12 @@ class ChatActivity : AppCompatActivity() {
         setContentView(R.layout.activity_chat)
 
         initListener()
-        restoreLastChats()
+        refresh()
 
         swiperefreshChat.setOnRefreshListener {
             refresh()
             swiperefreshChat.isRefreshing = false
         }
-    }
-
-    private fun restoreLastChats() {
-        DataModel.transactions?.forEach { tx ->
-            if (!tx.memo.isNullOrEmpty()){
-                // ADD CHAT BY ADDRESS
-            }
-        }
-        refresh()
     }
 
     private fun initListener(){
@@ -76,7 +64,7 @@ class ChatActivity : AppCompatActivity() {
 
         fragment.fullname = contact.fullname
         fragment.nickname = contact.nickname
-        fragment.lastMessage = contact.addressList[0]
+        fragment.contactAddress = contact.address
 
         fragTx.add(R.id.ChatTable, fragment)
         fragTx.commit()

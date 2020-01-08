@@ -1,11 +1,9 @@
 package org.myhush.silentdragon.chat
 
-import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.app.FragmentTransaction
 import android.widget.EditText
-import android.widget.ImageButton
 import android.widget.TextView
 import kotlinx.android.synthetic.main.activity_conversation.*
 import org.myhush.silentdragon.*
@@ -17,28 +15,25 @@ class ConversationActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_conversation)
+        val address = intent.extras.getString("contactAddress")
 
         displayName = intent.extras.getString("displayName")
+        contact = Addressbook.findContactByAddress(address)
+
+
         findViewById<TextView>(R.id.textViewContactName2).text = displayName
+        findViewById<TextView>(R.id.textView_zAddress).text = contact?.address
 
         buttonSend.setOnClickListener{
             sendMessage()
         }
 
-
-        contact = Addressbook.contactList[0] // FOR TESTING!!!
         restoreChat()
     }
 
     private fun sendMessage(){
-        // FOR TESTING!!!
-        val memo = findViewById<EditText>(R.id.userInput).text.toString()
-        findViewById<EditText>(R.id.userInput).text.clear()
-        var tx = DataModel.TransactionItem("send", 99, "0.00", memo, contact!!.addressList[0], "asdasdasd", 0)
-        val m = Message("addr", tx)
-        attachMessage(m)
-        m.messageType = MessageType.RECIEVE
-        attachMessage(m)
+        val memo = findViewById<TextView>(R.id.userInput).text.toString()
+        contact!!.address
     }
 
     private fun restoreChat() {

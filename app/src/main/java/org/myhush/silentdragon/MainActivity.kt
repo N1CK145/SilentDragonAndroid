@@ -75,10 +75,10 @@ class MainActivity : AppCompatActivity(),
             if(DataModel.selectedCurrency == "BTC")
                 Toast.makeText(applicationContext, "1 HUSH = ${DataModel.currencySymbols[DataModel.selectedCurrency]}${DecimalFormat(" #,##0.00000000")
                     .format(DataModel.currencyValues[DataModel.selectedCurrency])}", Toast.LENGTH_LONG).show()
-            else(
+            else
                 Toast.makeText(applicationContext, "1 HUSH = ${DataModel.currencySymbols[DataModel.selectedCurrency]}${DecimalFormat("#,##0.00")
-                .format(DataModel.currencyValues[DataModel.selectedCurrency])}", Toast.LENGTH_LONG).show()
-                    )
+                    .format(DataModel.currencyValues[DataModel.selectedCurrency])}", Toast.LENGTH_LONG).show()
+
         }
 
         bottomNav.setOnNavigationItemSelectedListener {
@@ -108,6 +108,17 @@ class MainActivity : AppCompatActivity(),
         loadSharedPref()
 
         updateUI(false)
+
+        ////////////////////////////
+        // CREATE SAMPLE CONTACTS //
+
+        Addressbook.addContact("", "N1CK145", "zs1hxxperc468hw5pnt07eg3762skvsdge7qy5p05z8fxuhxfu6n02zqnlgcsqu5xpcdzy62eehjgq")
+        Addressbook.addContact("", "Denio", "zDenio")
+        Addressbook.addContact("", "Max Mustermann", "zMaxMust")
+
+        //                        //
+        ////////////////////////////
+
     }
 
     private fun loadSharedPref() {
@@ -231,14 +242,17 @@ class MainActivity : AppCompatActivity(),
             val unconfirmed = txns.filter { t -> t.confirmations == 0L }
             if (unconfirmed.isNotEmpty()) {
                 for (tx in unconfirmed) {
-                    fragTx.add(
-                        txList.id ,
-                        UnconfirmedTxItemFragment.newInstance(
-                            Klaxon().toJsonString(tx),
-                            ""
-                        ),
-                        "tag1"
-                    )
+                    if(tx.memo?.length == 0){
+                        fragTx.add(
+                            txList.id ,
+                            UnconfirmedTxItemFragment.newInstance(
+                                Klaxon().toJsonString(tx),
+                                ""
+                            ),
+                            "tag1"
+                        )
+                    }
+
                 }
             }
 
@@ -247,15 +261,18 @@ class MainActivity : AppCompatActivity(),
             if (confirmed.isNotEmpty()) {
                 var oddeven = "odd"
                 for (tx in confirmed) {
-                    fragTx.add(
-                        txList.id,
-                        TransactionItemFragment.newInstance(
-                            Klaxon().toJsonString(tx),
-                            oddeven
-                        ),
-                        "tag1"
-                    )
-                    oddeven = if (oddeven == "odd") "even" else "odd"
+                    if(tx.memo?.length == 0){
+                        fragTx.add(
+                            txList.id,
+                            TransactionItemFragment.newInstance(
+                                Klaxon().toJsonString(tx),
+                                oddeven
+                            ),
+                            "tag1"
+                        )
+                        oddeven = if (oddeven == "odd") "even" else "odd"
+                    }
+
                 }
             }
             fragTx.commitAllowingStateLoss()
