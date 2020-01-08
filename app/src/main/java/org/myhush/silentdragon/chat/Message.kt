@@ -18,5 +18,4 @@ class Message {
         this.toAddress = tx.addr
         this.fromAddress = fromAddress
     }
-
 }

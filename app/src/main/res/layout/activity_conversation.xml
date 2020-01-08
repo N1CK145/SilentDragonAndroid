@@ -6,18 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".conversation_item_recive" >
 
-    <TextView
-        android:id="@+id/textView_zAddress"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="#0AFFFFFF"
-        android:text="zAddress"
-        android:textAlignment="center"
-        android:textSize="8sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout4" />
-
     <android.support.constraint.ConstraintLayout
         android:id="@+id/constraintLayout4"
         android:layout_width="0dp"
@@ -104,5 +92,17 @@
             app:layout_constraintTop_toTopOf="parent" />
 
     </android.support.constraint.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/textView_zAddress"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="#0AFFFFFF"
+        android:text="zAddress"
+        android:textAlignment="center"
+        android:textSize="8sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout4" />
 
 </android.support.constraint.ConstraintLayout>

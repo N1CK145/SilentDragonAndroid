@@ -50,7 +50,7 @@ class ChatActivity : AppCompatActivity() {
         }
     }
 
-    fun refresh(){
+    private fun refresh(){
         findViewById<LinearLayout>(R.id.ChatTable).removeAllViews()
 
         Addressbook.contactList.forEach {

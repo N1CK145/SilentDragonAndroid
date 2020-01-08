@@ -42,4 +42,7 @@ object Addressbook {
         }
         return null
     }
+    fun clear() {
+        contactList.clear()
+    }
 }

@@ -1,12 +1,16 @@
 package org.myhush.silentdragon.chat
 
+import android.os.Build
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.annotation.RequiresApi
 import android.support.v4.app.FragmentTransaction
 import android.widget.EditText
 import android.widget.TextView
 import kotlinx.android.synthetic.main.activity_conversation.*
 import org.myhush.silentdragon.*
+import java.time.LocalDateTime
+import java.util.*
 
 class ConversationActivity : AppCompatActivity() {
     var displayName = ""
@@ -32,12 +36,12 @@ class ConversationActivity : AppCompatActivity() {
     }
 
     private fun sendMessage(){
-        val memo = findViewById<TextView>(R.id.userInput).text.toString()
-        contact!!.address
+        // TODO
+        //val memo = findViewById<TextView>(R.id.userInput).text.toString()
     }
 
     private fun restoreChat() {
-        contact?.messageList?.forEach {
+        contact?.messageList?.asReversed()?.forEach {
             attachMessage(it)
         }
     }

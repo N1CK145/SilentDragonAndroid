@@ -25,6 +25,7 @@ import kotlinx.android.synthetic.main.content_main.*
 import org.myhush.silentdragon.DataModel.ConnectionStatus
 import org.myhush.silentdragon.DataModel.connStatus
 import org.myhush.silentdragon.chat.ChatActivity
+import org.myhush.silentdragon.chat.Message
 import java.text.DecimalFormat
 
 
@@ -109,15 +110,16 @@ class MainActivity : AppCompatActivity(),
 
         updateUI(false)
 
-        ////////////////////////////
+        /*///////////////////////////
         // CREATE SAMPLE CONTACTS //
 
+        Addressbook.clear()
         Addressbook.addContact("", "N1CK145", "zs1hxxperc468hw5pnt07eg3762skvsdge7qy5p05z8fxuhxfu6n02zqnlgcsqu5xpcdzy62eehjgq")
         Addressbook.addContact("", "Denio", "zDenio")
         Addressbook.addContact("", "Max Mustermann", "zMaxMust")
 
         //                        //
-        ////////////////////////////
+        /////////////////////////// */
 
     }
 
@@ -225,6 +227,11 @@ class MainActivity : AppCompatActivity(),
         runOnUiThread {
             val fragTx = supportFragmentManager.beginTransaction()
 
+            // clear past messages
+            txns?.forEach {
+                Addressbook.findContactByAddress(it.addr)?.messageList?.clear()
+            }
+
             for (fr in supportFragmentManager.fragments) {
                 fragTx.remove(fr)
             }
@@ -251,6 +258,12 @@ class MainActivity : AppCompatActivity(),
                             ),
                             "tag1"
                         )
+                    } else {
+                        // test if contact exists
+                        if(Addressbook.findContactByAddress(tx.addr) == null)
+                            Addressbook.addContact("", tx.addr, tx.addr)
+                        // add message
+                        Addressbook.findContactByAddress(tx.addr)!!.messageList.add(Message(tx.addr, tx))
                     }
 
                 }
@@ -271,6 +284,12 @@ class MainActivity : AppCompatActivity(),
                             "tag1"
                         )
                         oddeven = if (oddeven == "odd") "even" else "odd"
+                    } else {
+                        // test if contact exists
+                        if(Addressbook.findContactByAddress(tx.addr) == null)
+                            Addressbook.addContact("", tx.addr, tx.addr)
+                        // add message
+                        Addressbook.findContactByAddress(tx.addr)!!.messageList.add(Message(tx.addr, tx))
                     }
 
                 }
