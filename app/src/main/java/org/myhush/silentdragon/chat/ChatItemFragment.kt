@@ -11,7 +11,6 @@ import kotlinx.android.synthetic.main.content_receive.*
 import org.myhush.silentdragon.R
 
 class ChatItemFragment : Fragment() {
-    var fullname: String = ""
     var nickname: String = ""
     var lastMessage: String = ""
     var contactAddress: String = ""

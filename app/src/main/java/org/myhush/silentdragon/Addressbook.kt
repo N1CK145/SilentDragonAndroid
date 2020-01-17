@@ -4,44 +4,40 @@ import org.myhush.silentdragon.chat.Message
 
 object Addressbook {
     class Contact {
-        var fullname = ""
         var nickname = ""
-        var address = ""
+        var addressIn = ""
+        var addressOut = ""
         val messageList = ArrayList<Message>()
 
-        constructor(fullname: String, nickname: String) {
-            this.fullname = fullname
+        constructor(nickname: String, addressIn: String, addressOut: String) {
             this.nickname = nickname
-        }
-
-        constructor(fullname: String, nickname: String, address: String) {
-            this.fullname = fullname
-            this.nickname = nickname
-            this.address = address
+            this.addressIn = addressIn
+            this.addressOut = addressOut
         }
     }
 
     val contactList = ArrayList<Contact>()
 
-    fun addContact(fullname: String, nickname: String) {
-        contactList.add(Contact(fullname, nickname))
+    fun addContact(nickname: String, addressIn: String, addressOut: String) {
+        contactList.add(Contact(nickname, addressIn, addressOut))
     }
 
-    fun addContact(fullname: String, nickname: String, address: String) {
-        contactList.add(Contact(fullname, nickname, address))
-    }
-
-    fun addContact(contact: Contact){
-        contactList.add(contact)
-    }
-
-    fun findContactByAddress(address: String): Contact? {
+    fun findContactByInAddress(address: String): Contact? {
         contactList.forEach {
-            if(it.address == address)
+            if(it.addressIn == address)
                 return it
         }
         return null
     }
+
+    fun findContactByOutAddress(address: String): Contact? {
+        contactList.forEach {
+            if (it.addressOut == address)
+                return it
+        }
+        return null
+    }
+
     fun clear() {
         contactList.clear()
     }

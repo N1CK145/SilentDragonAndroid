@@ -26,6 +26,7 @@ import org.myhush.silentdragon.DataModel.ConnectionStatus
 import org.myhush.silentdragon.DataModel.connStatus
 import org.myhush.silentdragon.chat.ChatActivity
 import org.myhush.silentdragon.chat.Message
+import org.myhush.silentdragon.chat.MessageType
 import java.text.DecimalFormat
 
 
@@ -229,7 +230,7 @@ class MainActivity : AppCompatActivity(),
 
             // clear past messages
             txns?.forEach {
-                Addressbook.findContactByAddress(it.addr)?.messageList?.clear()
+                Addressbook.findContactByInAddress(it.addr)?.messageList?.clear()
             }
 
             for (fr in supportFragmentManager.fragments) {
@@ -243,6 +244,11 @@ class MainActivity : AppCompatActivity(),
                 swiperefresh.isRefreshing = false
                 return@runOnUiThread
             }
+
+            ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            val fixAdd= "zs12ehfu3pzj23z88up5wefn2psl5akc3m3ctpnmxmyxm4qx3vghlnq98dnu7sv0hdqgn3e20jq2rr"
+            val fixName = "Netterdon"
+            ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
             // Split all the transactions into confirmations = 0 and confirmations > 0
             // Unconfirmed first
@@ -260,10 +266,14 @@ class MainActivity : AppCompatActivity(),
                         )
                     } else {
                         // test if contact exists
-                        if(Addressbook.findContactByAddress(tx.addr) == null)
-                            Addressbook.addContact("", tx.addr, tx.addr)
+                        if(Addressbook.findContactByInAddress(tx.addr) == null)
+                            Addressbook.addContact(fixName, tx.addr, fixAdd)
                         // add message
-                        Addressbook.findContactByAddress(tx.addr)!!.messageList.add(Message(tx.addr, tx))
+                        if(tx.type == "send")
+                            Addressbook.findContactByInAddress(tx.addr)!!.messageList.add(Message(tx.addr, tx, MessageType.SEND))
+                        else
+                            Addressbook.findContactByInAddress(tx.addr)!!.messageList.add(Message(tx.addr, tx, MessageType.RECIEVE))
+
                     }
 
                 }
@@ -286,10 +296,13 @@ class MainActivity : AppCompatActivity(),
                         oddeven = if (oddeven == "odd") "even" else "odd"
                     } else {
                         // test if contact exists
-                        if(Addressbook.findContactByAddress(tx.addr) == null)
-                            Addressbook.addContact("", tx.addr, tx.addr)
+                        if(Addressbook.findContactByInAddress(tx.addr) == null)
+                            Addressbook.addContact(fixName, tx.addr, fixAdd)
                         // add message
-                        Addressbook.findContactByAddress(tx.addr)!!.messageList.add(Message(tx.addr, tx))
+                        if(tx.type == "send")
+                            Addressbook.findContactByInAddress(tx.addr)!!.messageList.add(Message(tx.addr, tx, MessageType.SEND))
+                        else
+                            Addressbook.findContactByInAddress(tx.addr)!!.messageList.add(Message(tx.addr, tx, MessageType.RECIEVE))
                     }
 
                 }

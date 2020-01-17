@@ -62,9 +62,8 @@ class ChatActivity : AppCompatActivity() {
         val fragment = ChatItemFragment()
         val fragTx: FragmentTransaction = supportFragmentManager.beginTransaction()
 
-        fragment.fullname = contact.fullname
         fragment.nickname = contact.nickname
-        fragment.contactAddress = contact.address
+        fragment.contactAddress = contact.addressIn
 
         fragTx.add(R.id.ChatTable, fragment)
         fragTx.commit()
