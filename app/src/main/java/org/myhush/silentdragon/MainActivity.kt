@@ -115,7 +115,7 @@ class MainActivity : AppCompatActivity(),
         // CREATE SAMPLE CONTACTS //
 
         Addressbook.clear()
-        Addressbook.addContact("", "N1CK145", "zs1hxxperc468hw5pnt07eg3762skvsdge7qy5p05z8fxuhxfu6n02zqnlgcsqu5xpcdzy62eehjgq")
+        Addressbook.addContact("", "N1CK145", "zN1CK145")
         Addressbook.addContact("", "Denio", "zDenio")
         Addressbook.addContact("", "Max Mustermann", "zMaxMust")
 
